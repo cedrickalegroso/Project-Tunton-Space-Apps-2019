@@ -1,0 +1,121 @@
+<mat-toolbar><img style="width: 48px;" src="../../assets/logo.png" />
+    <p> Project Tunton </p>
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+
+        <div class="contents">
+
+            <a (click)="showCount()">
+                <span class="material-icons mt-2 zz" style="font-size: 30px;">
+                    language
+                </span>
+                <p> World Count </p>
+            </a>
+
+            <mat-divider></mat-divider>
+
+            <a (click)="showTracer()">
+            <span class="material-icons mt-2" style="font-size: 30px;">
+                language
+            </span>
+            <p> Tracer </p>
+        </a>
+
+        </div>
+
+
+
+
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <div id="dash" [hidden]="isHiddenDash">
+
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-4 leftSection p-5">
+                        <p>Home </p>
+
+
+
+
+                    </div>
+                    <div class="col-md-8 rightSection">
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div id="trace" [hidden]="isHiddenTrace">
+
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-4 leftSection p-5">
+                        <p >Search user</p>
+
+                        <div [formGroup]="searchFormGroup">
+
+                            <input type="text" class="formName" name="controlNO" formControlName="controlNO" required>
+                            <br>
+                            <br>
+                            <button class="btn  btn-primary btn-block" (click)="searchUser(searchFormGroup.value)">
+                                Search </button>
+                        </div>
+
+                        <br>
+                        <p class="desc"> Input the quarantine pass Control number of a person you would like to trace. </p>
+
+
+                        <button class="btn btn-md btn-primary" (click)="populateMockData()"> Add Mock Data </button>
+
+
+
+                    </div>
+                    <div class="col-md-8 rightSection">
+
+                      
+
+                        <div *ngIf="people$ | async; else noUser">
+
+                         
+
+                            <div *ngFor="let people of people$ | async else noUser" > 
+                                <p>  {{people.name}} </p>    
+                                <p>   {{people.address}}  </p>            
+                                <p>   {{people.controlNo}}  </p>  
+                            </div>
+
+                            <h1 class="p-3"> Recent Action </h1>
+
+                            
+                        </div>
+                           
+
+                        <ng-template #noUser>
+                            <div class="text-center">
+
+
+                                <p> Your information here </p>
+                            </div>
+                        </ng-template>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </mat-drawer-content>
+</mat-drawer-container>

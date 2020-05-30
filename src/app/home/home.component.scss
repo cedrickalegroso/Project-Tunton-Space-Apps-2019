@@ -1,0 +1,56 @@
+mat-toolbar{
+    background-color: #15146B;
+    color: white;
+   
+    p {
+        margin-left: 25px;
+    }
+}
+
+mat-drawer-container{
+
+    mat-drawer{
+        border: none;
+        width: 125px;
+        background-color: #c4c2c2;
+        text-align: center;
+        fill: white;
+        color: white;
+
+        .contents {
+  
+          cursor: pointer;
+          
+        }
+    }
+
+    mat-drawer-content{
+
+        .leftSection{
+            height: 95vh;
+            background-color: #ececec;
+        
+            input[name="controlNO"] {
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                background-color: #ececec;
+                font-size: 1.5rem;
+            }
+        
+            p.desc {
+                opacity: 0.8;
+            }
+        }
+        
+        
+        .rightSection{
+            height: 95vh;
+            background-color: white;
+        }
+
+
+    }
+
+}
+
