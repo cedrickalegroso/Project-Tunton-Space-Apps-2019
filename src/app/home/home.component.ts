@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
 
   data1;
 
+  prop;
+
   people: AngularFirestoreCollection<Trace>;
   people$: Observable<Trace[]>
 
@@ -84,7 +86,7 @@ export class HomeComponent implements OnInit {
 
   openProfileDialog(): void {
     const dialogRef = this.dialog.open(VulnerableComponent, {
-      width: '400px',
+      width: '1200px',
       height: '600px',
       data: this.tracedPeople
     });
@@ -106,11 +108,15 @@ export class HomeComponent implements OnInit {
 
 
     const result1 = await this.getaction(value).then(
-      result1 => test1 = result1[0]
+      result1 => test1 = result1
     )
 
-    // this.chartTimein = test1.timein / 86400 * 100;
-    //console.log(this.chartTimein)
+    let timeTemp = test1.timein;
+
+    this.chartTimein = await this.secondtoTime(timeTemp)
+
+
+    console.log(this.chartTimein)
 
     this.chartTimeout = test1.timeout
 
@@ -121,14 +127,17 @@ export class HomeComponent implements OnInit {
 
     let querydata = await result2
 
+    console.log('query' + querydata[0].place)
 
-
-    this.possibleCount = querydata.length
+     this.possibleCount = querydata.length
 
     this.tracedPeople = querydata
 
 
     console.log('traced' + this.tracedPeople)
+
+
+    this.prop = "GGBABY"
 
   }
 
@@ -152,18 +161,47 @@ export class HomeComponent implements OnInit {
 
 
 
-     console.log(test1.place)
+    console.log(test1.length)
+
+    for (let x = 0; x <= test1.length - 1; x++) {
+
+      const document = firebase.firestore().collection('mockDataActions')
+     
+        .where('place', '==', test1[x].place)
+        .where('timein', '>=', test1[x].timein)
+        
+
+      let ticket = await document.get()
+      let response = ticket.docs.map(doc => doc.data());
+     // console.log(response)
+     return response
 
 
-    const document = firebase.firestore().collection('mockDataActions')
-     .where('place', '==', test1.place)
-     .where('timein', '>=', test1.timein)
-
-    let ticket = await document.get()
-    let response = ticket.docs.map(doc => doc.data());
-    return response
+    }
 
 
+    /*
+  
+ */
+
+  }
+
+
+  async secondtoTime(secs) {
+    var hours = Math.floor(secs / (60 * 60));
+
+    var divisor_for_minutes = secs % (60 * 60);
+    var minutes = Math.floor(divisor_for_minutes / 60);
+
+    var divisor_for_seconds = divisor_for_minutes % 60;
+    var seconds = Math.ceil(divisor_for_seconds);
+
+    var obj = {
+      "h": hours,
+      "m": minutes,
+      "s": seconds
+    };
+    return obj;
   }
 
 

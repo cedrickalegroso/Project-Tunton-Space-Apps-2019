@@ -2,6 +2,25 @@
 
 <h3> Vulnerable </h3>
 
-<div *ngFor="let traced of data">
-   <p> {{ traced.name }}</p>
-</div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Time Span</th>
+        <th scope="col">Control No</th>
+        <th scope="col">Medical Condition</th>
+        <th scope="col">Vulnerablity</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let traced of data"  >
+      <tr >
+        <td> {{ traced.name }} </td>
+        <td> {{ traced.timein2 }} - {{ traced.timeout2 }}</td>
+        <td> {{ traced.controlNo }} </td>
+        <td> {{ traced.medicalCondition }} </td>
+        <td> {{ traced.vulnerability }}</td>
+      </tr>
+
+  </table>
+
+
