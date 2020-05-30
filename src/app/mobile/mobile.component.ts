@@ -10,12 +10,29 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class MobileComponent implements OnInit {
 
+  searchFormGroup: FormGroup;
+
+  medicalCondition = new FormControl();
+
+  medicalConditionsList: string[] = ['Cardiovascular disease', 'Diabetes', 'Chronic respiratory disease', 'Hypertension', 'no pre-existing conditions'];
+
   constructor(
     public dialog: MatDialog,
     private _formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+
+
+    this.searchFormGroup = this._formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      prevdis: ['', Validators.required],
+      sex: ['', Validators.required],
+      age: ['', Validators.required],
+      controlNo: ['', Validators.required],
+      contact: ['', Validators.required],
+    });
   }
 
   openProfileDialog(): void {
@@ -23,8 +40,10 @@ export class MobileComponent implements OnInit {
       width: '400px',
       height: '600px'
     });
+  }
 
-
+  register(value) {
+    console.log(value)
   }
 
 }
@@ -32,11 +51,12 @@ export class MobileComponent implements OnInit {
 
 
 @Component({
-  selector: 'app-servicedashboard',
+  selector: 'app-mobile',
   templateUrl: 'activate.html',
 })
 export class activeControl {
 
+  registerForm: FormGroup;
 
   constructor(
     public dialog: MatDialog,
@@ -47,8 +67,17 @@ export class activeControl {
 
   ngOnInit() {
 
+
+
+    this.registerForm = this._formBuilder.group({
+      displayName: ['', Validators.required],
+    });
  
 
+  }
+
+   register(value) {
+    console.log(value)
   }
 
 

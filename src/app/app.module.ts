@@ -11,7 +11,7 @@ import {environment} from '../environments/environment'
 
 
 /* Angular */
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*Material*/
 import {MatMenuModule} from '@angular/material/menu';
@@ -20,6 +20,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatInputModule} from '@angular/material/input';
+
+
+
 
 
 //Angular FIre
@@ -28,6 +35,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
 import { MobileComponent, activeControl } from './mobile/mobile.component';
+
 
 
 @NgModule({
@@ -48,7 +56,12 @@ import { MobileComponent, activeControl } from './mobile/mobile.component';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatInputModule
   ],
   entryComponents: [activeControl],
   providers: [],

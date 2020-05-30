@@ -2,11 +2,84 @@
     <div id="mobileWrapper">
         <mat-toolbar>Project Tunton</mat-toolbar>
 
-      <div class="container text-center">
-        <p> Start using this app as your quarantine pass </p>
-       <p> Activate your current control No  <a class="text-primary" (click)="openProfileDialog()"> here. </a></p>
-      </div>
-      
+        <div class="vertical-center">
+
+            <div class="container text-left">
+                <p> Start using this app as your quarantine pass </p>
+
+            
+
+              <div class="m-1" [formGroup]="searchFormGroup">
+                <mat-form-field class="example-full-width">
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="name" type="text">
+                </mat-form-field>
+                <br> 
+               
+
+                <mat-form-field class="ml-2" class="example-full-width">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" type="text">
+                </mat-form-field>
+
+                <br> 
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName="contact" type="text">
+                </mat-form-field>
+                <br> 
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Age</mat-label>
+                    <input matInput formControlName="age" type="text">
+                </mat-form-field>
+
+
+                <br> 
+                <mat-form-field>
+                    <mat-label>Medical Conditions</mat-label>
+                    <mat-select [formControl]="medicalCondition" multiple>
+                      <mat-select-trigger>
+                        {{medicalCondition.value ? medicalCondition.value[0] : ''}}
+                        <span *ngIf="medicalCondition.value?.length > 1" class="example-additional-selection">
+                          (+{{medicalCondition.value.length - 1}} {{medicalCondition.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let med of medicalConditionsList" [value]="med">{{med}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+             
+               
+         
+
+                   
+                <mat-radio-group aria-label="Select a gender ">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                  </mat-radio-group>
+
+                    <br />
+                    <br />
+
+                    <div class="container text-center">
+                        <button class="btn text-center  btn-primary btn-block"  (click)="register(searchFormGroup.value)">
+                            Activate account   </button>
+                    </div>
+             
+                </div>  
+
+              
+              
+            </div>
+
+
+
+
+        </div>
+
+
 
 
     </div>
