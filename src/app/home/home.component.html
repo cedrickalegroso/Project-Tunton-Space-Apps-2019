@@ -18,11 +18,11 @@
             <mat-divider></mat-divider>
 
             <a (click)="showTracer()">
-            <span class="material-icons mt-2" style="font-size: 30px;">
-                language
-            </span>
-            <p> Tracer </p>
-        </a>
+                <span class="material-icons mt-2" style="font-size: 30px;">
+                    language
+                </span>
+                <p> Tracer </p>
+            </a>
 
         </div>
 
@@ -58,7 +58,7 @@
             <div class="container-fluid ">
                 <div class="row">
                     <div class="col-md-4 leftSection p-5">
-                        <p >Search user</p>
+                        <p>Search user</p>
 
                         <div [formGroup]="searchFormGroup">
 
@@ -68,9 +68,10 @@
                             <button class="btn  btn-primary btn-block" (click)="searchUser(searchFormGroup.value)">
                                 Search </button>
                         </div>
-
+                        CA-897-8985
                         <br>
-                        <p class="desc"> Input the quarantine pass Control number of a person you would like to trace. </p>
+                        <p class="desc"> Input the quarantine pass Control number of a person you would like to trace.
+                        </p>
 
 
                         <button class="btn btn-md btn-primary" (click)="populateMockData()"> Add Mock Data </button>
@@ -80,23 +81,118 @@
                     </div>
                     <div class="col-md-8 rightSection">
 
-                      
+
 
                         <div *ngIf="people$ | async; else noUser">
 
-                         
 
-                            <div *ngFor="let people of people$ | async else noUser" > 
-                                <p>  {{people.name}} </p>    
-                                <p>   {{people.address}}  </p>            
-                                <p>   {{people.controlNo}}  </p>  
-                            </div>
 
-                            <h1 class="p-3"> Recent Action </h1>
+                            <div *ngFor="let people of people$ | async">
 
                             
-                        </div>
+
+                                <div class="container-fluid m-2">
+                                 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h1 class="display-4" style="font-size: 1.5rem;"> <strong style="font-size: 1.0rem;"  > Name </strong>  <br>  {{people.name}} </h1>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h1 class="display-4 " style="font-size: 1.5rem;"> <strong style="font-size: 1.0rem;"  > Age </strong> <br> {{people.age}} </h1>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h1 class="display-4 " style="font-size: 1.5rem;">  <strong style="font-size: 1.0rem;" > Sex </strong> <br>  {{people.gender}} </h1>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h1 class="display-4" style="font-size: 1.5rem;">   <strong style="font-size: 1.0rem;" > Control No </strong> <br>  {{people.controlNo}} </h1>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <h1 class="display-4" style="font-size: 1.5rem;">  <strong style="font-size: 1.0rem;" > Address </strong> <br>  {{people.address}} </h1>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <h1 class="display-4" style="font-size: 1.5rem;">  <strong style="font-size: 1.0rem;" > Contact </strong> <br>  {{people.contact}} </h1>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h1 class="display-4" style="font-size: 1.5rem;">   <strong style="font-size: 1.0rem;" > Medrical Conditions </strong> <br>  {{people.medicalCondition[0]}} </h1>
+                                        </div>
+
+                                       
+                                    </div>
+
+                                    <hr>
+
+
+                                    
+
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="container-fluid m-2">
                            
+
+                            <h4> Recent Action </h4>
+                            <div *ngFor="let action of action$ | async">
+                               
+                                <div class="m3"  >
+                                    <div class="vertical-center">
+                                    <div class="container" >
+                                        
+
+                                          
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h1> {{action.place}}</h1> 
+
+
+
+                                                <div class="container ">
+                                                     <div class="row">
+                                                         <div class="col-md-6">
+                                                            <div class="graph">
+                                                                <div id="bartwo" ng-style="{ 'width' : 80% }" ></div>
+                                                                <div id="barone"></div>
+                                                            </div>
+                                                         </div>
+                                                     </div>
+
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <p> {{ possibleCount }} peson's Vulnerable  </p>
+                                                <a (click)="openProfileDialog()"> Show details </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  
+                                </div>
+
+                                <br />
+
+                            
+                            </div>
+
+                        </div>
+
+                        
+
+                           
+
+
+                        </div>
+
 
                         <ng-template #noUser>
                             <div class="text-center">

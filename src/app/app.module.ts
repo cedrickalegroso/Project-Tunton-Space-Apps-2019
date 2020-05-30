@@ -35,6 +35,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
 import { MobileComponent, activeControl } from './mobile/mobile.component';
+import { VulnerableComponent } from './vulnerable/vulnerable.component';
 
 
 
@@ -42,7 +43,8 @@ import { MobileComponent, activeControl } from './mobile/mobile.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    MobileComponent
+    MobileComponent,
+    VulnerableComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { MobileComponent, activeControl } from './mobile/mobile.component';
     MatRadioModule,
     MatInputModule
   ],
-  entryComponents: [activeControl],
+  entryComponents: [activeControl, ],
   providers: [],
   bootstrap: [AppComponent]
 })

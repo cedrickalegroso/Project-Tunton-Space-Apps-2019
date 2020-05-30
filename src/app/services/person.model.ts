@@ -1,4 +1,4 @@
-export interface Trace {
+export interface Person {
     name: string;
     sex: string;
     controlNo: string;

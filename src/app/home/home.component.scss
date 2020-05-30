@@ -47,6 +47,43 @@ mat-drawer-container{
         .rightSection{
             height: 95vh;
             background-color: white;
+
+
+
+
+            .vertical-center {
+                min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+                min-height: 10vh; /* These two lines are counted as one :-)       */
+                
+                display: flex;
+                align-items: center;
+
+                background-color: #ECECEC;
+        
+                #barone{
+                    display: block;
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    background-color: #ececec;
+                }
+    
+                #bartwo{
+                    display: block;
+                    position: absolute;
+                    height: 2px;
+                   
+                    background-color: red;
+                    z-index: 5;
+                }
+                  
+            }
+  
+            
+
+
+
+          
         }
 
 

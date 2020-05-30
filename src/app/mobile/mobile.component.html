@@ -5,11 +5,173 @@
         <div class="vertical-center">
 
             <div class="container text-left">
-                <p> Start using this app as your quarantine pass </p>
 
-            
+                <div *ngIf="person$ | async; else noUser">
+
+                    <div *ngFor="let person of person$ | async else noUser" > 
+                        <strong>  {{person.name}} </strong>    
+                        <p>   {{person.address}}  </p>            
+                        <p>   {{person.controlNo}}  </p>  
+                    </div>
+ 
+             
+                </div>
+
+
+                <ng-template #noUser>
+
+
+
+                    <div class="text-center" [hidden]="isHiddenLogin">
+
+                        
+
+                        <div class="m-1" [formGroup]="login">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Control Number </mat-label>
+                                <input matInput formControlName="controlNo" type="text">
+                            </mat-form-field>
+
+
+                            <div class="container text-center">
+                                <button class="btn text-center  btn-primary btn-block"
+                                    (click)="loginuser(login.value)">
+                                    Login </button>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="container text-center">
+                            <p> New user? Register  <a style="cursor: pointer;"  class="text-primary" (click)="showRegister()"> here </a> </p>
+                           
+                        </div>
+
+                    </div>
+
+
+                    <div [hidden]="isHiddenRegister">
+
+                      
+
+
+
+
+                        <div class="m-1" [formGroup]="searchFormGroup">
+                   
+
+                         
+
+                                <strong> Personal Information </strong>
+
+
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>First name</mat-label>
+                                <input matInput formControlName="name" type="text">
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Control Number</mat-label>
+                                <input matInput formControlName="controlNo" type="text">
+                            </mat-form-field>
+
+
+                            <p class="lead" style="font-size: 0.9rem;"> <strong> NOTE </strong> use the control number
+                                on your existing quarantine pass </p>
+
+                       
+
+
+                            <mat-form-field class="ml-2" class="example-full-width">
+                                <mat-label>Address</mat-label>
+                                <input matInput formControlName="address" type="text">
+                            </mat-form-field>
+
+                            <br>
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Contact Number</mat-label>
+                                <input matInput formControlName="contact" type="text">
+                            </mat-form-field>
+                            <br>
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Age</mat-label>
+                                <input matInput formControlName="age" type="text">
+                            </mat-form-field>
+
+
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Medical Conditions</mat-label>
+                                <mat-select formControlName="medicalCondition" multiple>
+                                    <mat-select-trigger>
+                                        {{medicalCondition.value ? medicalCondition.value[0] : ''}}
+                                        <span *ngIf="medicalCondition.value?.length > 1"
+                                            class="example-additional-selection">
+                                            (+{{medicalCondition.value.length - 1}}
+                                            {{medicalCondition.value?.length === 2 ? 'other' : 'others'}})
+                                        </span>
+                                    </mat-select-trigger>
+                                    <mat-option *ngFor="let med of medicalConditionsList" [value]="med">{{med}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+
+
+
+
+
+                            <mat-radio-group formControlName="sex" aria-label="Select a gender ">
+                                <mat-radio-button value="male">Male</mat-radio-button>
+                                <mat-radio-button value="female">Female</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br />
+                            <br />
+
+                       
+
+                            <div class="container text-center">
+                                <button class="btn text-center  btn-primary btn-block"
+                                    (click)="register(searchFormGroup.value)">
+                                    Register </button>
+                            </div>
+
+                        </div>
+
+                        <div class="container text-center">
+                            <p> Already have an account?   <a  style="cursor: pointer;" class="text-primary" (click)="showLogin()"> Login </a> </p>
+                          
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <!-- 
+
+                    <p> Start using this app as your quarantine pass </p>
+
+
 
               <div class="m-1" [formGroup]="searchFormGroup">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Control Number</mat-label>
+                    <input matInput formControlName="controlNo" type="text">
+                </mat-form-field>
+             
+
+                <p class="lead" style="font-size: 0.9rem;"> <strong>  NOTE </strong> use the control number on your existing quarantine pass </p>
+
+              
                 <mat-form-field class="example-full-width">
                     <mat-label>First name</mat-label>
                     <input matInput formControlName="name" type="text">
@@ -37,9 +199,9 @@
 
 
                 <br> 
-                <mat-form-field>
+                <mat-form-field >
                     <mat-label>Medical Conditions</mat-label>
-                    <mat-select [formControl]="medicalCondition" multiple>
+                    <mat-select formControlName="medicalCondition" multiple>
                       <mat-select-trigger>
                         {{medicalCondition.value ? medicalCondition.value[0] : ''}}
                         <span *ngIf="medicalCondition.value?.length > 1" class="example-additional-selection">
@@ -55,7 +217,7 @@
          
 
                    
-                <mat-radio-group aria-label="Select a gender ">
+                <mat-radio-group formControlName="sex" aria-label="Select a gender ">
                     <mat-radio-button value="male">Male</mat-radio-button>
                     <mat-radio-button value="female">Female</mat-radio-button>
                   </mat-radio-group>
@@ -63,17 +225,30 @@
                     <br />
                     <br />
 
+                    <mat-radio-group formControlName="ver" aria-label="Select a gender ">
+                        <mat-radio-button value="male">I have input the right data. for the safety of others </mat-radio-button>
+                      </mat-radio-group>
+
+                      <br />
+                      <br />
+
                     <div class="container text-center">
                         <button class="btn text-center  btn-primary btn-block"  (click)="register(searchFormGroup.value)">
                             Activate account   </button>
                     </div>
              
-                </div>  
+                </div>   -->
 
-              
-              
+
+
+
+
+                </ng-template>
+
+
+
+
             </div>
-
 
 
 
