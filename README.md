@@ -1,28 +1,19 @@
-# Spaceappscovid19
+<h1> Summary </h1>
+Tunton is a Filipino word for To-trace, hence our objective to trace links and help flatten the curve. The Covid 19 in the philippines is growing. one way flatten the curve is to trace links where the virus can spread. Sadly the Philipine government is having a hard time tracing links. The project tunton aims to help scientists/doctors to trace people that are vulnerable and possibly had contact with the positive patient by making use of quarantine passes.
+How We Addressed This Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+In the Philippines, Quarantine Pass are mandatory when you go to Mall, groceries and public markets. Its purposes is that you can go out and do errands or jobs(skeletal force) where each family must have one pass only. We created a digital version of this where you can register your quarantine pass control number to an app and will make it a QR code for faster checking and verification. every time you enter and exit a building your qr code will be checked and logged in a database. We believe that this could help trace links which authorities like DOH or any higher health offices can query data about patients' previous actions. Per say, someone at SM MOA have been infected. The doctor/scientist  can query the positive patient's data and see how many people are in that place in that span of time and who is more vulnerable.
 
-## Development server
+<h1> Data & Resources </h1>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+NASA Earth
+Hospitalization Rates and Characteristics of Patients Hospitalized with Laboratory-Confirmed Coronavirus Disease 2019
 
-## Code scaffolding
+<h1> Team </h1>
+Cedrick Alegroso
+Gaille Cabanggay
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Tags
+#Angular #Firebase
 # Project-Tunton-Space-Apps-2019
