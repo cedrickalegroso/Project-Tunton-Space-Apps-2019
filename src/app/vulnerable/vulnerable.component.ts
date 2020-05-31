@@ -43,7 +43,7 @@ export class VulnerableComponent implements OnInit {
 
 
   async getImage(data){
-    let demoKey = 'O92Y32feDehgafAvhOUI6jry7rYKh3UyY7EAdbrn';
+    
 
    
     console.log(data[0].place)
@@ -52,7 +52,7 @@ export class VulnerableComponent implements OnInit {
     if (data[0].place === "Bacoor") {
       console.log('using bacoor')
      
-      this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.9663629&lat=14.4314357&date=2019-01-01&dim=0.15&api_key=O92Y32feDehgafAvhOUI6jry7rYKh3UyY7EAdbrn', { responseType: 'blob' }).subscribe(result => {
+      this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.9663629&lat=14.4314357&date=2019-01-01&dim=0.15&api_key=', { responseType: 'blob' }).subscribe(result => {
         console.log(result);
         return this.createImageFromBlob(result);
       });
@@ -60,7 +60,7 @@ export class VulnerableComponent implements OnInit {
       
     } else if (data[0].place === "SM MOA") {
       console.log('using moa')
-    this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.9827649&lat=14.5364266&date=2019-01-01&dim=0.15&api_key=O92Y32feDehgafAvhOUI6jry7rYKh3UyY7EAdbrn', { responseType: 'blob' }).subscribe(result => {
+    this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.9827649&lat=14.5364266&date=2019-01-01&dim=0.15&api_key=', { responseType: 'blob' }).subscribe(result => {
       console.log(result);
       return this.createImageFromBlob(result);
     });
@@ -69,7 +69,7 @@ export class VulnerableComponent implements OnInit {
     } else if (data[0].place === "Luzon Public Market") {
       console.log('using public market')
      
-      this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.97&lat=14.59&date=2019-01-01&dim=0.15&api_key=O92Y32feDehgafAvhOUI6jry7rYKh3UyY7EAdbrn', { responseType: 'blob' }).subscribe(result => {
+      this.http.get('https://api.nasa.gov/planetary/earth/imagery?lon=120.97&lat=14.59&date=2019-01-01&dim=0.15&api_key=', { responseType: 'blob' }).subscribe(result => {
         console.log(result);
         return this.createImageFromBlob(result);
       });
