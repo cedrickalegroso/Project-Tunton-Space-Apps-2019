@@ -26,6 +26,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
 
 
+// HTTP CLIENT
+import { HttpClientModule }    from '@angular/common/http';
 
 
 
@@ -63,7 +65,8 @@ import { VulnerableComponent } from './vulnerable/vulnerable.component';
     MatSelectModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   entryComponents: [activeControl, ],
   providers: [],

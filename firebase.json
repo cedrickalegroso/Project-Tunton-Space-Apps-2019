@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "project-tunton",
+    "public": "dist/spaceappscovid19",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

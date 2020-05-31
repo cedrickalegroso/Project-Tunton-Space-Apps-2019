@@ -10,6 +10,9 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { VulnerableComponent } from '../vulnerable/vulnerable.component';
 
 
+// HTTP CLIENT
+import { HttpClient } from '@angular/common/http';
+
 
 import { TrackerService } from '../services/tracker.service'
 
@@ -39,11 +42,13 @@ export class HomeComponent implements OnInit {
 
   searchFormGroup: FormGroup;
 
-  isHiddenDash = false;
-  isHiddenTrace = true;
+  isHiddenDash = true;
+  isHiddenTrace = false;
 
 
   data1;
+
+  placeImage;
 
   prop;
 
@@ -65,6 +70,7 @@ export class HomeComponent implements OnInit {
     public trace$: TrackerService,
     private router: Router,
     private afs: AngularFirestore,
+    private http: HttpClient
   ) {
 
 
@@ -79,7 +85,9 @@ export class HomeComponent implements OnInit {
 
 
 
+
   }
+
 
 
 
@@ -113,7 +121,7 @@ export class HomeComponent implements OnInit {
 
     let timeTemp = test1.timein;
 
-    this.chartTimein = await this.secondtoTime(timeTemp)
+
 
 
     console.log(this.chartTimein)
@@ -180,29 +188,10 @@ export class HomeComponent implements OnInit {
     }
 
 
-    /*
   
- */
 
   }
 
-
-  async secondtoTime(secs) {
-    var hours = Math.floor(secs / (60 * 60));
-
-    var divisor_for_minutes = secs % (60 * 60);
-    var minutes = Math.floor(divisor_for_minutes / 60);
-
-    var divisor_for_seconds = divisor_for_minutes % 60;
-    var seconds = Math.ceil(divisor_for_seconds);
-
-    var obj = {
-      "h": hours,
-      "m": minutes,
-      "s": seconds
-    };
-    return obj;
-  }
 
 
 
@@ -221,9 +210,10 @@ export class HomeComponent implements OnInit {
   }
 
   async populateMockData() {
-    this.trace$.addDataMock();
-    console.log('populated')
+    //this.trace$.addDataMock();
+    //console.log('populated')
   }
+
 
 
 

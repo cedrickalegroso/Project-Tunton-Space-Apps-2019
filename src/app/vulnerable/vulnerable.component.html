@@ -1,15 +1,33 @@
 
 
-<h3> Vulnerable </h3>
 
-<table class="table table-striped">
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4">
+      <img  class="img-fluid" style="width: 100%;"  [src]="placeImage2">
+      <p> Image by NASA Earth API. please wait</p>
+    </div>
+    <div class="col-md-8 text-left">
+      <div class="vertical-center">
+        <div class="container">
+          <h1> {{ place }}</h1>
+          <h3> {{count}} vulnerable person(s)</h3>
+        </div>
+      
+      </div>
+     
+    </div>
+  </div>
+
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Time Span</th>
+      <th scope="col">Time Span</th>
         <th scope="col">Control No</th>
         <th scope="col">Medical Condition</th>
-        <th scope="col">Vulnerablity</th>
       </tr>
     </thead>
     <tbody *ngFor="let traced of data"  >
@@ -18,9 +36,12 @@
         <td> {{ traced.timein2 }} - {{ traced.timeout2 }}</td>
         <td> {{ traced.controlNo }} </td>
         <td> {{ traced.medicalCondition }} </td>
-        <td> {{ traced.vulnerability }}</td>
+
       </tr>
 
   </table>
 
+
+
+</div>
 
