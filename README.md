@@ -6,7 +6,7 @@ In the Philippines, Quarantine Pass are mandatory when you go to Mall, groceries
 
 <h1> Data & Resources </h1>
 
-NASA Earth
+NASA Earth <br />
 Hospitalization Rates and Characteristics of Patients Hospitalized with Laboratory-Confirmed Coronavirus Disease 2019
 
 <h1> Team </h1>
